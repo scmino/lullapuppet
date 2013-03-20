@@ -1,14 +1,17 @@
+# SB: Diff from Lullabot: std port, allow from 10.x networks
+#
 <IfModule mod_status.c>
     ExtendedStatus On
-    Listen 61709
-    NameVirtualHost 127.0.0.1:61709
-
-    <VirtualHost 127.0.0.1:61709>
+    #Listen 61709
+    #NameVirtualHost 127.0.0.1:61709
+    #<VirtualHost 127.0.0.1:61709>
         <Location /server-status>
             SetHandler server-status
             Order deny,allow
             Deny from all
             Allow from 127.0.0.1
+            Allow from 10.0.0.0/8
+            Allow from 193.5.238.0/24
         </Location>
 
         Alias /apc.php /usr/local/share/php/apc.php
@@ -16,7 +19,9 @@
             Order deny,allow
             Deny from all
             Allow from 127.0.0.1
+            Allow from 10.0.0.0/8
+            Allow from 193.5.238.0/24
         </Directory>
-    </VirtualHost>
+    #</VirtualHost>
 
 </IfModule>
