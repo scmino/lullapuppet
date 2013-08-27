@@ -1,11 +1,15 @@
 /var/log/apache2/*.log {
-    daily 
+    # Rotate weekly, for our (lowish) traffic
+    #daily 
+    weekly
     missingok
     rotate 90
     dateext
     compress
     notifempty
-    create 640 root adm
+    # World read for awstats
+    #create 640 root adm
+    create 644 root adm
     sharedscripts
     postrotate
         if [ -f "`. /etc/apache2/envvars ; echo ${APACHE_PID_FILE:-/var/run/apache2.pid}`" ]; then
