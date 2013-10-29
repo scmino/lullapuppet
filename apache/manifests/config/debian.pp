@@ -36,6 +36,11 @@ class apache::config::debian (
 #        content => template('apache/etc/apache2/envvars.erb'),
 #    }
 
+    # Global security
+    file { '/etc/apache2/conf.d/security':
+        source  => 'puppet:///modules/apache/etc/apache2/conf.d/security',
+    }
+
     file { '/etc/apache2/ports.conf':
         content => template('apache/etc/apache2/ports.conf.erb'),
     }
