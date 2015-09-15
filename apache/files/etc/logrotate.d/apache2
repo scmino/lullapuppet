@@ -1,7 +1,7 @@
 /var/log/apache2/*.log {
-    # Rotate weekly, for our (lowish) traffic
-    #daily 
-    weekly
+    # prune logs daily, keep for 90 days.
+    daily 
+    #weekly
     missingok
     rotate 90
     dateext

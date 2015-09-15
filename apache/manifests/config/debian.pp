@@ -95,12 +95,12 @@ class apache::config::debian (
     }
 
     # mod_passenger
-    if $mod_passenger {
-        package { ['libapache2-mod-passenger', 'rails', 'librack-ruby', 'libmysql-ruby']:
-            ensure  => present,
-            notify  => Service['apache2'],
-        }
-    }
+#    if $mod_passenger {
+#        package { ['libapache2-mod-passenger', 'rails', 'librack-ruby', 'libmysql-ruby']:
+#            ensure  => present,
+#            notify  => Service['apache2'],
+#        }
+#    }
     file { '/etc/apache2/mods-enabled/passenger.conf':
         ensure  => $mod_passenger ? {
             true    => '/etc/apache2/mods-available/passenger.conf',
